@@ -38,10 +38,12 @@ def main() -> None:
         for path in paths
     }
     manifest = {
-        "schema": "etzion-silberstein-e6-f2-release-v1",
+        "schema": "etzion-silberstein-e6-f2-release-v2",
         "claim": (
             "The maximum dimension of a binary rank-distance-three linear code "
-            "on the Ferrers diagram with column heights (5,5,5,5,1,1) is 11."
+            "on the Ferrers diagram with column heights (5,5,5,5,1,1) is 11; "
+            "row-cone propagation gives bound 12 and exact optimum 11 at every "
+            "minimum rank distance at least three."
         ),
         "field": "F2",
         "support_column_heights": [5, 5, 5, 5, 1, 1],
@@ -63,6 +65,14 @@ def main() -> None:
             "words": 2_048,
             "minimum_nonzero_rank": 3,
             "rank_distribution": {"0": 1, "3": 605, "4": 1098, "5": 344},
+        },
+        "row_cone_family": {
+            "field": "F2",
+            "minimum_rank_distances": "all integers d >= 3",
+            "singleton_bound": 12,
+            "exact_maximum_dimension": 11,
+            "finite_certificate_stages_checked": 11,
+            "finite_check_distance_range": [3, 13],
         },
         "files": files,
     }

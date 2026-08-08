@@ -1,5 +1,5 @@
 {
-  "claim": "The maximum dimension of a binary rank-distance-three linear code on the Ferrers diagram with column heights (5,5,5,5,1,1) is 11.",
+  "claim": "The maximum dimension of a binary rank-distance-three linear code on the Ferrers diagram with column heights (5,5,5,5,1,1) is 11; row-cone propagation gives bound 12 and exact optimum 11 at every minimum rank distance at least three.",
   "etzion_silberstein_bound": 12,
   "exact_maximum_dimension": 11,
   "field": "F2",
@@ -9,8 +9,8 @@
       "sha256": "58278fd7c98ca3032348529ac46718086e00d0c5d4b22c6972a388525272372e"
     },
     "verification/build_manifest.py": {
-      "bytes": 2343,
-      "sha256": "dea1084084c27867923966bb3089c6ac7ec1910e7395a2a20e0a604d3e1edd6e"
+      "bytes": 2788,
+      "sha256": "ff3985c500475f2d8fc9e89bb4d51a3603354d792f844049e9d02578434559bb"
     },
     "verification/cnf_samples/cadical.version.txt": {
       "bytes": 6,
@@ -75,6 +75,18 @@
     "verification/dim11/verify_e6_dim11_independent.cpp": {
       "bytes": 8644,
       "sha256": "40b0ecc46f75a2c8db522ed8800d35de14b688e8a4b6b3b00a208d8dd788efe3"
+    },
+    "verification/family/README.md": {
+      "bytes": 1090,
+      "sha256": "e7a5cb19c7032528e470cde39b4a6d5b8826e55379613334f1702085461b4c0b"
+    },
+    "verification/family/bruteforce_tiny.py": {
+      "bytes": 3961,
+      "sha256": "59b4b73b1c69bbf9080c82fe464b614c98519854d0766dc1f9fd304022c972a8"
+    },
+    "verification/family/verify_family.py": {
+      "bytes": 2699,
+      "sha256": "336f685e881b0328b0ce9df3f2c8847de389d84f6d21e49a5a6464032f043783"
     },
     "verification/independent/MATHEMATICAL_AUDIT.md": {
       "bytes": 4982,
@@ -505,8 +517,8 @@
       "sha256": "148f1706c645b8a7fa7ec793b18a85f14fefd628130522c6554c6f85f984892a"
     },
     "verification/verify_release.py": {
-      "bytes": 16124,
-      "sha256": "33452fed7f00a2207ad60178251d002e907bf8585bee37d689aaa10133f52512"
+      "bytes": 18376,
+      "sha256": "3006ce37b96c5d2dc2038b8b4589081f03615fa8276a7d0f2258c2834a50f0ca"
     }
   },
   "lower_bound_certificate": {
@@ -521,7 +533,18 @@
     "words": 2048
   },
   "minimum_rank_distance": 3,
-  "schema": "etzion-silberstein-e6-f2-release-v1",
+  "row_cone_family": {
+    "exact_maximum_dimension": 11,
+    "field": "F2",
+    "finite_certificate_stages_checked": 11,
+    "finite_check_distance_range": [
+      3,
+      13
+    ],
+    "minimum_rank_distances": "all integers d >= 3",
+    "singleton_bound": 12
+  },
+  "schema": "etzion-silberstein-e6-f2-release-v2",
   "support_column_heights": [
     5,
     5,

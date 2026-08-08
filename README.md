@@ -11,6 +11,11 @@ minimum rank distance: 3
 The Etzion--Silberstein bound is 12, but the largest possible dimension is
 exactly 11.  Thus this instance disproves the conjecture.
 
+The paper also proves a row-cone propagation identity.  Iterating it from
+this seed gives explicit binary counterexamples with Singleton-type bound 12
+and exact optimum 11 at every minimum rank distance `d >= 3` (and likewise
+for the transposed diagrams).
+
 ## Fast verification of the lower bound
 
 The explicit 11-dimensional code is stored as eleven generators in
@@ -86,6 +91,37 @@ All rank computations, parity systems, and searches use exact arithmetic over
 
 The same result disproves the binary `(n,d)=(5,3)` case of the
 puncturing--inclusion MRD conjecture formulated by Couvée and Neri in 2026.
+
+## Counterexamples at every distance
+
+For a diagram `D=(c_1,...,c_n)` at distance `d`, let
+`b=nu_min(D,d)>0`.  Its row cone is
+
+```text
+R(D) = (c_1+1, ..., c_n+1, 1 repeated b times).
+```
+
+The paper proves exactly
+
+```text
+nu_min(R(D),d+1) = nu_min(D,d)
+kappa_F(R(D),d+1) = kappa_F(D,d),
+```
+
+where `kappa_F` is the largest possible dimension over the field `F`.
+Starting from `(5,5,5,5,1,1)` over `F_2` therefore preserves the one-unit
+gap while raising the distance at each step.
+
+Two portable checks accompany the proof:
+
+```bash
+python3 verification/family/verify_family.py
+python3 verification/family/bruteforce_tiny.py
+```
+
+The first constructs eleven stages and checks every word, support condition,
+Singleton cut, and shifted rank distribution.  The second independently
+enumerates every binary subspace in a tiny exhaustive test range.
 
 ## Paper
 

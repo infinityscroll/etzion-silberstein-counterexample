@@ -100,6 +100,66 @@ def verify_dimension_11() -> dict:
     }
 
 
+def rank_from_column_masks(columns: list[int]) -> int:
+    pivots: dict[int, int] = {}
+    for value in columns:
+        x = value
+        while x:
+            pivot = x.bit_length() - 1
+            if pivot not in pivots:
+                pivots[pivot] = x
+                break
+            x ^= pivots[pivot]
+    return len(pivots)
+
+
+def singleton_cuts(heights: tuple[int, ...], distance: int) -> tuple[int, ...]:
+    return tuple(
+        sum(max(0, height - (distance - 1 - j)) for height in heights[j:])
+        for j in range(distance)
+    )
+
+
+def verify_row_cone_family() -> dict:
+    certificate = load_json(HERE / "dim11" / "e6_dim11_certificate.json")
+    basis = certificate["basis_column_masks"]
+    heights = tuple(certificate["support_column_heights"])
+
+    for t in range(11):
+        distance = 3 + t
+        require(min(singleton_cuts(heights, distance)) == 12,
+                f"row-cone stage {t}: Singleton bound mismatch")
+        require(all(mask < (1 << height) for row in basis for mask, height in zip(row, heights)),
+                f"row-cone stage {t}: support violation")
+
+        distribution: Counter[int] = Counter()
+        for coefficients in range(1 << len(basis)):
+            columns = [0] * len(heights)
+            for index, generator in enumerate(basis):
+                if (coefficients >> index) & 1:
+                    columns = [left ^ right for left, right in zip(columns, generator)]
+            distribution[rank_from_column_masks(columns)] += 1
+        expected = {0: 1, 3 + t: 605, 4 + t: 1098, 5 + t: 344}
+        require(dict(sorted(distribution.items())) == expected,
+                f"row-cone stage {t}: rank distribution mismatch")
+
+        coned_basis: list[list[int]] = []
+        for index, generator in enumerate(basis):
+            tag = [0] * 12
+            tag[index] = 1
+            coned_basis.append([value << 1 for value in generator] + tag)
+        basis = coned_basis
+        heights = tuple(height + 1 for height in heights) + (1,) * 12
+
+    return {
+        "stages": 11,
+        "distance_range": [3, 13],
+        "singleton_bound": 12,
+        "exact_dimension_lower_certificates": 11,
+        "words_per_stage": 2048,
+    }
+
+
 def verify_primary() -> dict:
     specifications = [
         ("field", "standard_d_kernel_orbits.jsonl", "standard_d_all_orbits_cpp.jsonl", 3_240, 105, 189),
@@ -308,7 +368,7 @@ def verify_residuals() -> dict:
 def verify_manifest() -> dict:
     require(MANIFEST.is_file(), "audit manifest is missing")
     manifest = load_json(MANIFEST)
-    require(manifest["schema"] == "etzion-silberstein-e6-f2-release-v1", "unexpected manifest schema")
+    require(manifest["schema"] == "etzion-silberstein-e6-f2-release-v2", "unexpected manifest schema")
     files = manifest["files"]
     for relative, record in files.items():
         path = REPO / relative
@@ -333,6 +393,7 @@ def main() -> None:
     args = parser.parse_args()
     result = {
         "dimension_11": verify_dimension_11(),
+        "row_cone_family": verify_row_cone_family(),
         "classification": verify_classification(),
         "primary": verify_primary(),
         "independent": verify_independent(),
