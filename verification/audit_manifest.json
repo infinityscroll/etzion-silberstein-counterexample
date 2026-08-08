@@ -224,6 +224,10 @@
       "bytes": 4515,
       "sha256": "16a3b511938537b9b3a2120ddb4875a1e839d8cab08bfa348f76eb57f0e81125"
     },
+    "verification/raw_cuda/README.md": {
+      "bytes": 816,
+      "sha256": "54eb6c260d191eae173017ccd991dce9a7f2f1b6f9c2fd73681ab01f3705c397"
+    },
     "verification/raw_cuda/class_II.json": {
       "bytes": 547,
       "sha256": "f5b8278fd02ec84fcc4a76aff0af7b8d01972d4df224e38318dd16b7d7d050e5"
