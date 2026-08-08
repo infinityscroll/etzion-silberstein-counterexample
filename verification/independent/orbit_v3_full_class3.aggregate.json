@@ -1,0 +1,48 @@
+{
+  "checker": "affine-equation-dpll-48var-v3",
+  "mode": "orbits-sharded-aggregate",
+  "class": 3,
+  "automorphism_count": 18,
+  "total_kernels": 2794155,
+  "total_orbits": 156679,
+  "processed": 156679,
+  "coverage_mass": 2794155,
+  "unsat": 156679,
+  "sat": 0,
+  "constraint_count_min": 113,
+  "constraint_count_max": 189,
+  "constraint_count_sum": 20556147,
+  "search_nodes": 195769715,
+  "conflicts": 195769715,
+  "forced_equations": 455229586,
+  "shards": [
+    {
+      "range": [0, 39170],
+      "processed": 39170,
+      "coverage_mass": 701370,
+      "record_digest_fnv1a64": "0x12681d20da9099fe",
+      "result_sha256": "81811bb162ee90d0d897430a8da283e051eb691b30dd36e0cfd6ecdcbdc92d1c"
+    },
+    {
+      "range": [39170, 78340],
+      "processed": 39170,
+      "coverage_mass": 701145,
+      "record_digest_fnv1a64": "0x0afb9a4a18b5221f",
+      "result_sha256": "d6de019857c34d1dde45ee7329bf40fd975979a8947a9ead832c9770d91d0816"
+    },
+    {
+      "range": [78340, 117510],
+      "processed": 39170,
+      "coverage_mass": 701087,
+      "record_digest_fnv1a64": "0x2b463753167271d4",
+      "result_sha256": "7832e72fabe5e014e4a646e69a374c61cf0badeca48c344cf022ef7a77f25d75"
+    },
+    {
+      "range": [117510, 156679],
+      "processed": 39169,
+      "coverage_mass": 690553,
+      "record_digest_fnv1a64": "0x447d669ec081b4ed",
+      "result_sha256": "c08e4408d257d31065973953d095dd8a23de8d8585f8c7f24bcb37cd462ce0c4"
+    }
+  ]
+}

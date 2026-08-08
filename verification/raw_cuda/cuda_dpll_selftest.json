@@ -1,0 +1,10 @@
+{
+  "seed": 8808001,
+  "tests": 256,
+  "variable_range": [4, 14],
+  "SAT": 128,
+  "UNSAT": 128,
+  "errors": 0,
+  "truth_table_mismatches": 0,
+  "total_gpu_nodes": 11538
+}

@@ -1,0 +1,16 @@
+{
+  "class": 0,
+  "start": 0,
+  "count": 2794155,
+  "first_span": [1, 2, 3],
+  "last_span": [2047, 3071, 3072],
+  "status_counts": {"UNSAT": 2794155, "SAT": 0, "constraint_overflow": 0, "solver_overflow": 0},
+  "sum_nodes": 15361512744,
+  "max_nodes": 201729,
+  "sum_constraints": 366464175,
+  "constraint_count_range": [105, 189],
+  "result_digest_fnv1a64": "229d914e2388c642",
+  "digest_record_format": "status:u8 || constraint_count:u32le || node_count:u64le, in kernel order",
+  "elapsed_seconds": 628.91,
+  "device": "NVIDIA A100-SXM4-40GB"
+}

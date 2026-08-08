@@ -1,0 +1,19 @@
+automorphisms=900 kernel_orbits=3240 mass=2794155
+       33.29 real        41.01 user         0.26 sys
+            26787840  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+                1791  page reclaims
+                   1  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+                   0  voluntary context switches
+               52969  involuntary context switches
+        100750975514  instructions retired
+         85338458952  cycles elapsed
+            26427728  peak memory footprint

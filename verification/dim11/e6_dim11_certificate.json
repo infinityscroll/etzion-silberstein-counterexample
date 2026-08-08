@@ -1,0 +1,27 @@
+{
+  "basis_column_masks": [
+    [1, 0, 8, 21, 0, 0],
+    [2, 0, 16, 15, 0, 0],
+    [4, 0, 5, 30, 0, 0],
+    [8, 0, 10, 25, 0, 0],
+    [16, 0, 20, 23, 0, 0],
+    [0, 1, 6, 28, 0, 0],
+    [0, 2, 12, 29, 0, 0],
+    [0, 4, 24, 31, 0, 0],
+    [0, 8, 21, 27, 0, 0],
+    [0, 16, 15, 19, 0, 0],
+    [0, 0, 11, 6, 0, 1]
+  ],
+  "bit_convention": "Bit r of a column mask is row r, with bit 0 the top row.",
+  "dimension": 11,
+  "field": "F2",
+  "minimum_nonzero_rank": 3,
+  "rank_distribution": {
+    "0": 1,
+    "3": 605,
+    "4": 1098,
+    "5": 344
+  },
+  "support_column_heights": [5, 5, 5, 5, 1, 1],
+  "verification": "Exact Gaussian elimination over F2 on all 2048 coefficient vectors."
+}

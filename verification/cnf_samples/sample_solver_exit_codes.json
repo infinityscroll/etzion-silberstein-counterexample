@@ -1,0 +1,14 @@
+{
+  "sample_class2_360_726": {
+    "cadical": 20,
+    "cryptominisat5": 20
+  },
+  "sample_class3_282_3165": {
+    "cadical": 20,
+    "cryptominisat5": 20
+  },
+  "sample_standard_277_3812": {
+    "cadical": 20,
+    "cryptominisat5": 20
+  }
+}

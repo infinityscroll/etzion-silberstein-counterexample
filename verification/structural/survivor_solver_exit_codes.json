@@ -1,0 +1,26 @@
+{
+  "residual_1_2": {
+    "cadical": 20,
+    "cryptominisat5": 20,
+    "drat_trim_original": 0,
+    "drat_trim_core": 0
+  },
+  "residual_2_5": {
+    "cadical": 20,
+    "cryptominisat5": 20,
+    "drat_trim_original": 0,
+    "drat_trim_core": 0
+  },
+  "residual_256_512": {
+    "cadical": 20,
+    "cryptominisat5": 20,
+    "drat_trim_original": 0,
+    "drat_trim_core": 0
+  },
+  "residual_256_3072": {
+    "cadical": 20,
+    "cryptominisat5": 20,
+    "drat_trim_original": 0,
+    "drat_trim_core": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "field": {
+    "automorphism_count": 900,
+    "kernel_orbits": 3240,
+    "minimum_rank_two_words": 105,
+    "surviving_orbit_mass": 70,
+    "surviving_orbits": [
+      {"annihilator_span": [2, 5, 7], "orbit_mass": 5},
+      {"annihilator_span": [256, 3072, 3328], "orbit_mass": 5},
+      {"annihilator_span": [1, 2, 3], "orbit_mass": 30},
+      {"annihilator_span": [256, 512, 768], "orbit_mass": 30}
+    ]
+  },
+  "class_II": {
+    "automorphism_count": 108,
+    "kernel_orbits": 26643,
+    "minimum_rank_two_words": 117,
+    "surviving_orbit_mass": 0,
+    "surviving_orbits": []
+  },
+  "class_III": {
+    "automorphism_count": 18,
+    "kernel_orbits": 156679,
+    "minimum_rank_two_words": 113,
+    "surviving_orbit_mass": 0,
+    "surviving_orbits": []
+  },
+  "necessary_rank_two_words": 105,
+  "raw_kernels_per_class": 2794155
+}

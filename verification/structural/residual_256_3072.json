@@ -1,0 +1,12 @@
+{
+  "class": 0,
+  "clauses": 7081,
+  "cnf_sha256": "30c12b16b8306ffe4e399feb77deb7ae5fefc1c4803481c5631266b6cbadb22d",
+  "constraints": 105,
+  "span": [
+    256,
+    3072,
+    3328
+  ],
+  "variables": 1784
+}

@@ -1,0 +1,12 @@
+lr_orbits 3
+rep 13 normalized_spaces 16800 basis 33825 18968 9654 4698
+rep 186 normalized_spaces 2800 basis 33825 19706 9159 4713
+rep 204 normalized_spaces 336 basis 33825 20050 9654 4713
+transpose_map
+13 -> 13
+186 -> 186
+204 -> 204
+named_representatives
+field_dual_of_standard_D normalized_index 11179 root 204 root_mass 336
+published_class2 normalized_index 6711 root 186 root_mass 2800
+published_class3 normalized_index 17382 root 13 root_mass 16800
