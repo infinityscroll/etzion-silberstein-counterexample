@@ -389,6 +389,31 @@ By the puncturing correspondence of \cite[Theorems~6.6 and~7.5]{CN26}, this
 also disproves the \((n,d,\F)=(5,3,\F_2)\) instance of the
 puncturing--inclusion MRD conjecture \cite[Conjecture~7.4]{CN26}.
 
+\begin{remark}[The transposed diagram]\label{rem:transpose}
+Transposition preserves rank and restricts to a bijection between the codes
+supported on \(\E\) and those supported on the transposed diagram
+\(F_6=\E^{\mathsf T}\), which has column heights \((6,4,4,4,4)\) and whose
+Etzion--Silberstein bound at distance three is also \(12\).  Hence the
+optimum for \(F_6\) over \(\F_2\) equals \(11\) as well, and the irreducible
+pair \((F_6,3)\) of \cite{CN26} also fails over \(\F_2\).
+\end{remark}
+
+\begin{remark}[Minimality within the family]\label{rem:minimality}
+The two smaller diagrams of the irreducible family
+\(E_n=(n-1,\ldots,n-1,1,1)\) attain their bounds over \(\F_2\), so \(n=6\)
+is the smallest failing instance.  For \(E_4=(3,3,1,1)\) the bound is \(2\),
+attained by the span of
+\(\bigl(\begin{smallmatrix}0&1&1&0\\0&1&0&0\\1&1&0&0\end{smallmatrix}\bigr)\)
+and
+\(\bigl(\begin{smallmatrix}0&1&1&1\\1&0&0&0\\0&1&0&0\end{smallmatrix}\bigr)\).
+For \(E_5=(4,4,4,1,1)\) the bound is \(6\); running the reduction of
+Lemma~\ref{lem:reduction} through the unique equivalence class of binary
+\([3\times3,6,2]\) MRD codes shows that exactly \(7\) of the \(651\)
+codimension-two kernels admit a lift, and the resulting explicit
+\([E_5,6,3]_2\) code (included with the verification package) has rank
+distribution \(0^1\,3^{57}\,4^{6}\).
+\end{remark}
+
 \section*{Computational provenance}
 
 The complete verification package is available at
