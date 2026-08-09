@@ -120,6 +120,55 @@ def singleton_cuts(heights: tuple[int, ...], distance: int) -> tuple[int, ...]:
     )
 
 
+def verify_small_examples() -> dict:
+    specifications = {
+        "E_4": ("e4_dim2_certificate.json", (3, 3, 1, 1), 2, {0: 1, 3: 3}),
+        "E_5": ("e5_dim6_certificate.json", (4, 4, 4, 1, 1), 6,
+                {0: 1, 3: 57, 4: 6}),
+    }
+    summaries: dict[str, dict] = {}
+    for label, (filename, expected_heights, expected_dimension,
+                expected_distribution) in specifications.items():
+        certificate = load_json(HERE / "small_examples" / filename)
+        basis = certificate["basis_column_masks"]
+        heights = tuple(certificate["support_column_heights"])
+        distance = certificate["minimum_nonzero_rank"]
+        require(certificate["field"] == "F2", f"{label}: wrong field")
+        require(heights == expected_heights, f"{label}: wrong support")
+        require(len(basis) == certificate["dimension"] == expected_dimension,
+                f"{label}: wrong certificate dimension")
+        require(min(singleton_cuts(heights, distance)) == expected_dimension,
+                f"{label}: Singleton bound mismatch")
+        require(all(len(generator) == len(heights) for generator in basis),
+                f"{label}: generator width mismatch")
+        require(all(0 <= value < (1 << height)
+                    for generator in basis
+                    for value, height in zip(generator, heights)),
+                f"{label}: support violation")
+
+        words: set[tuple[int, ...]] = set()
+        distribution: Counter[int] = Counter()
+        for coefficients in range(1 << expected_dimension):
+            columns = [0] * len(heights)
+            for index, generator in enumerate(basis):
+                if (coefficients >> index) & 1:
+                    columns = [left ^ right for left, right in zip(columns, generator)]
+            words.add(tuple(columns))
+            distribution[rank_from_column_masks(columns)] += 1
+        require(len(words) == 1 << expected_dimension,
+                f"{label}: dependent generators")
+        require(dict(sorted(distribution.items())) == expected_distribution,
+                f"{label}: rank distribution mismatch")
+        summaries[label] = {
+            "dimension": expected_dimension,
+            "minimum_nonzero_rank": min(rank for rank in distribution if rank),
+            "rank_distribution": {str(rank): count
+                                  for rank, count in expected_distribution.items()},
+            "singleton_cuts": list(singleton_cuts(heights, distance)),
+        }
+    return summaries
+
+
 def verify_row_cone_family() -> dict:
     certificate = load_json(HERE / "dim11" / "e6_dim11_certificate.json")
     basis = certificate["basis_column_masks"]
@@ -393,6 +442,7 @@ def main() -> None:
     args = parser.parse_args()
     result = {
         "dimension_11": verify_dimension_11(),
+        "small_examples": verify_small_examples(),
         "row_cone_family": verify_row_cone_family(),
         "classification": verify_classification(),
         "primary": verify_primary(),

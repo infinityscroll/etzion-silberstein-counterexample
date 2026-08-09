@@ -1,0 +1,13 @@
+{
+  "diagram": "E_4",
+  "support_column_heights": [3, 3, 1, 1],
+  "field": "F2",
+  "dimension": 2,
+  "minimum_nonzero_rank": 3,
+  "basis_column_masks": [
+    [4, 7, 1, 0],
+    [2, 5, 1, 1]
+  ],
+  "bit_convention": "Bit r of a column mask is row r, with bit 0 the top row.",
+  "note": "Attains the ES bound nu_min(E_4,3)=2 over F_2."
+}

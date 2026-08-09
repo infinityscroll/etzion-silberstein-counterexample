@@ -66,6 +66,18 @@ def main() -> None:
             "minimum_nonzero_rank": 3,
             "rank_distribution": {"0": 1, "3": 605, "4": 1098, "5": 344},
         },
+        "smaller_family_members": {
+            "E_4": {
+                "support_column_heights": [3, 3, 1, 1],
+                "singleton_bound": 2,
+                "exact_dimension": 2,
+            },
+            "E_5": {
+                "support_column_heights": [4, 4, 4, 1, 1],
+                "singleton_bound": 6,
+                "exact_dimension": 6,
+            },
+        },
         "row_cone_family": {
             "field": "F2",
             "minimum_rank_distances": "all integers d >= 3",

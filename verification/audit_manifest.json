@@ -5,12 +5,12 @@
   "field": "F2",
   "files": {
     "verification/README.md": {
-      "bytes": 1548,
-      "sha256": "58278fd7c98ca3032348529ac46718086e00d0c5d4b22c6972a388525272372e"
+      "bytes": 1735,
+      "sha256": "e6b7a389f5562415f64ac95c6d8dfd036fdadf4a96a89ec9ae3c44c96ed6a8b1"
     },
     "verification/build_manifest.py": {
-      "bytes": 2788,
-      "sha256": "ff3985c500475f2d8fc9e89bb4d51a3603354d792f844049e9d02578434559bb"
+      "bytes": 3174,
+      "sha256": "bba0317279b993044aebe4b3e974ee5631bb7b30d0253ca31f14c3a13ae8a0e2"
     },
     "verification/cnf_samples/cadical.version.txt": {
       "bytes": 6,
@@ -292,6 +292,22 @@
       "bytes": 542,
       "sha256": "24494d8a7caae8c668d560d988ba033dfa34baa3be70e7945ae5b40cccaadf3b"
     },
+    "verification/small_examples/README.md": {
+      "bytes": 402,
+      "sha256": "d391c8d9a8eac3ef7ba1545f9da0e5a850089938a3fcda4aecad2c2f20d33628"
+    },
+    "verification/small_examples/e4_dim2_certificate.json": {
+      "bytes": 335,
+      "sha256": "6a8097874dd04d6d67a359dac23b716ffc4fc4e863e587f34f3c700b820d3cd9"
+    },
+    "verification/small_examples/e5_dim6_certificate.json": {
+      "bytes": 550,
+      "sha256": "9474aff9024ed683e30e5e9a24bd45a474f1c5ada910a92e903d8797b66fe9b9"
+    },
+    "verification/small_examples/verify_small_examples.py": {
+      "bytes": 2573,
+      "sha256": "bf69c71b87a0638c21b8e3b4a962f44a1a5a64a2d8522524356bb7a9d829e898"
+    },
     "verification/structural/README.md": {
       "bytes": 1351,
       "sha256": "9670087cafed452687ae59715d543536aa2431ab9965897a12c24239415a3b60"
@@ -517,8 +533,8 @@
       "sha256": "148f1706c645b8a7fa7ec793b18a85f14fefd628130522c6554c6f85f984892a"
     },
     "verification/verify_release.py": {
-      "bytes": 18376,
-      "sha256": "3006ce37b96c5d2dc2038b8b4589081f03615fa8276a7d0f2258c2834a50f0ca"
+      "bytes": 20933,
+      "sha256": "b2040d989fdf767b5bd0b337e38291759bf74405700e8556a384d83ec3a6c00e"
     }
   },
   "lower_bound_certificate": {
@@ -545,6 +561,29 @@
     "singleton_bound": 12
   },
   "schema": "etzion-silberstein-e6-f2-release-v2",
+  "smaller_family_members": {
+    "E_4": {
+      "exact_dimension": 2,
+      "singleton_bound": 2,
+      "support_column_heights": [
+        3,
+        3,
+        1,
+        1
+      ]
+    },
+    "E_5": {
+      "exact_dimension": 6,
+      "singleton_bound": 6,
+      "support_column_heights": [
+        4,
+        4,
+        4,
+        1,
+        1
+      ]
+    }
+  },
   "support_column_heights": [
     5,
     5,

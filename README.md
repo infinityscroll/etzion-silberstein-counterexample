@@ -16,6 +16,11 @@ this seed gives explicit binary counterexamples with Singleton-type bound 12
 and exact optimum 11 at every minimum rank distance `d >= 3` (and likewise
 for the transposed diagrams).
 
+Explicit exact certificates show that the preceding family members
+`E_4=(3,3,1,1)` and `E_5=(4,4,4,1,1)` attain their respective bounds 2 and
+6 over `F_2`; hence `E_6` is the smallest failing member of this irreducible
+family.
+
 ## Fast verification of the lower bound
 
 The explicit 11-dimensional code is stored as eleven generators in
@@ -39,6 +44,12 @@ rank 0:    1
 rank 3:  605
 rank 4: 1098
 rank 5:  344
+```
+
+The two smaller certificates are checked with
+
+```bash
+python3 verification/small_examples/verify_small_examples.py
 ```
 
 ## Upper-bound proof
