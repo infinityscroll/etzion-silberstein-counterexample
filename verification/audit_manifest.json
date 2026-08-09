@@ -5,8 +5,8 @@
   "field": "F2",
   "files": {
     "verification/README.md": {
-      "bytes": 1548,
-      "sha256": "58278fd7c98ca3032348529ac46718086e00d0c5d4b22c6972a388525272372e"
+      "bytes": 1888,
+      "sha256": "790b5f10108ee78903db9da620362dd0bbe5622c5345dc2bf90b7adda25cd4c0"
     },
     "verification/build_manifest.py": {
       "bytes": 2343,
@@ -75,6 +75,34 @@
     "verification/dim11/verify_e6_dim11_independent.cpp": {
       "bytes": 8644,
       "sha256": "40b0ecc46f75a2c8db522ed8800d35de14b688e8a4b6b3b00a208d8dd788efe3"
+    },
+    "verification/family/bruteforce_tiny.py": {
+      "bytes": 4106,
+      "sha256": "f647785f015d3357ee358c678a558eafb9035f5c57ccb085b2b100edf13de4e0"
+    },
+    "verification/family/e4_dim2_certificate.json": {
+      "bytes": 414,
+      "sha256": "36590a6120339113644314c21ab9ef151ce41e85fef04973a923c0939ab4b13c"
+    },
+    "verification/family/e5_dim6_certificate.json": {
+      "bytes": 789,
+      "sha256": "79a49ed64e70693149bb21a023b8bcd87f9819c76cbdf7ac24587b5591f19fb1"
+    },
+    "verification/family/es_family_check.py": {
+      "bytes": 2880,
+      "sha256": "46784aa908c5ae02ea9733861e80752925f1199ada038cc1a1635cb8614e9d85"
+    },
+    "verification/family/settle_e5_exact.py": {
+      "bytes": 6213,
+      "sha256": "b3fbed6af95b3f7844496fdea34e15c7ec35749227ec06730e15dfad98d64f2a"
+    },
+    "verification/family/verify_family.py": {
+      "bytes": 2759,
+      "sha256": "bb2f8917cf0a4354884619ce6c94aff30fe15df98a884a3eb27b4cb40b42a01f"
+    },
+    "verification/family/verify_small_examples.py": {
+      "bytes": 2573,
+      "sha256": "bf69c71b87a0638c21b8e3b4a962f44a1a5a64a2d8522524356bb7a9d829e898"
     },
     "verification/independent/MATHEMATICAL_AUDIT.md": {
       "bytes": 4982,

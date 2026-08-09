@@ -8,10 +8,7 @@ from collections import Counter
 from pathlib import Path
 
 
-CERT = Path(
-    "/Users/dusk/etzion-silberstein-counterexample/verification/dim11/"
-    "e6_dim11_certificate.json"
-)
+CERT = Path(__file__).resolve().parents[1] / "dim11" / "e6_dim11_certificate.json"
 
 
 def rank_columns(columns: list[int]) -> int:

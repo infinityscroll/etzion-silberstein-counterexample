@@ -4,6 +4,8 @@ All mathematical decisions in this directory use exact arithmetic over
 `F_2`.  The package has four independent layers.
 
 - `dim11/` contains the explicit lower-bound certificate and two verifiers.
+- `family/` contains the exact `E_4` and `E_5` certificates, the recursive
+  row-cone verifier, and an independent exhaustive tiny-instance check.
 - `structural/` contains the four residual field-class instances left by the
   rank-two filter, together with independent SAT logs and proof certificates.
 - `primary/` contains the complete orbit-reduced 40-variable enumeration.
@@ -24,6 +26,14 @@ cross-checks every primary orbit/result record, checks the independent shard
 coverage, validates all raw-kernel terminal summaries and deterministic
 digests, checks the residual solver records, and verifies every SHA-256 hash
 in `audit_manifest.json`.
+
+Run the family checks separately:
+
+```bash
+python3 verification/family/verify_small_examples.py
+python3 verification/family/verify_family.py
+python3 verification/family/bruteforce_tiny.py
+```
 
 The standard audit validates the compressed proof files and their recorded
 terminal checks.  A full replay of all four proofs is available separately:
