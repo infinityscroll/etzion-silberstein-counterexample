@@ -38,6 +38,15 @@ jobs:
       - name: Full release verification
         run: python3 verification/verify_release.py | tee release_verification.log
 
+      - name: Verify smaller family members
+        run: python3 verification/family/verify_small_examples.py | tee small_examples.log
+
+      - name: Verify row-cone family
+        run: python3 verification/family/verify_family.py | tee row_cone_family.log
+
+      - name: Exhaustively test tiny row-cone instances
+        run: python3 verification/family/bruteforce_tiny.py | tee row_cone_tiny.log
+
       - name: Replay DRAT unsatisfiability proofs
         run: python3 verification/structural/verify_drat_proofs.py | tee drat_replay.log
 
@@ -46,7 +55,9 @@ jobs:
           mkdir -p attest
           cp verification/dim11/e6_dim11_certificate.json attest/
           cp verification/audit_manifest.json attest/
-          cp dim11_python.log dim11_cpp.log release_verification.log drat_replay.log attest/
+          cp dim11_python.log dim11_cpp.log release_verification.log \
+            small_examples.log row_cone_family.log row_cone_tiny.log \
+            drat_replay.log attest/
           git rev-parse HEAD > attest/GIT_COMMIT
           date -u +%FT%TZ > attest/VERIFIED_AT_UTC
           (cd attest && sha256sum * > SHA256SUMS)
