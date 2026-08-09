@@ -50,7 +50,10 @@ classes of binary \([4\times4,12,2]\) MRD codes.  A rank-distribution
 argument eliminates two classes and leaves four kernel orbits in the field class;
 all four exact lift systems are unsatisfiable.  Independently written
 verifiers reproduce the result, including a raw enumeration of all
-\(8{,}382{,}465\) kernels without orbit reduction.
+\(8{,}382{,}465\) kernels without orbit reduction.  We also prove an exact
+row-cone propagation identity.  Iterating it produces binary counterexamples
+with bound \(12\) and optimum \(11\) at every minimum rank distance
+\(d\geq3\).
 \end{abstract}
 
 \section{Introduction}
@@ -65,7 +68,9 @@ continues to describe it as widely open and reduces it to irreducible
 families \cite{CN26,CMN26}.
 
 We give a counterexample over the smallest field and determine its exact
-dimension.
+dimension.  A row-cone operation then propagates this counterexample to every
+larger minimum distance while preserving both the Singleton-type bound and the
+exact optimum dimension.
 
 \begin{theorem}\label{thm:main}
 Let \(\E\) be the \(5\times6\) Ferrers diagram with column heights
@@ -400,21 +405,21 @@ pair \((F_6,3)\) of \cite{CN26} also fails over \(\F_2\).
 
 \begin{remark}[Minimality within the family]\label{rem:minimality}
 The two smaller diagrams of the irreducible family
-\(E_n=(n-1,\ldots,n-1,1,1)\) attain their bounds over \(\F_2\), so \(n=6\)
+\(E_n=(\underbrace{n-1,\ldots,n-1}_{n-2},1,1)\) attain their bounds over
+\(\F_2\), so \(n=6\)
 is the smallest failing instance.  For \(E_4=(3,3,1,1)\) the bound is \(2\),
 attained by the span of
 \(\bigl(\begin{smallmatrix}0&1&1&0\\0&1&0&0\\1&1&0&0\end{smallmatrix}\bigr)\)
 and
 \(\bigl(\begin{smallmatrix}0&1&1&1\\1&0&0&0\\0&1&0&0\end{smallmatrix}\bigr)\).
-For \(E_5=(4,4,4,1,1)\) the bound is \(6\); running the reduction of
-Lemma~\ref{lem:reduction} through the unique equivalence class of binary
-\([3\times3,6,2]\) MRD codes shows that exactly \(7\) of the \(651\)
-codimension-two kernels admit a lift, and the resulting explicit
-\([E_5,6,3]_2\) code (included with the verification package) has rank
-distribution \(0^1\,3^{57}\,4^{6}\).
+For \(E_5=(4,4,4,1,1)\) the bound is \(6\), attained by the explicit
+\([E_5,6,3]_2\) code included with the verification package; its rank
+distribution is \(0^1\,3^{57}\,4^{6}\).  Exact verifiers for both smaller
+examples are included as well.
 \end{remark}
 
-\section{An infinite family: every distance fails over $\F_2$}
+\section{Counterexamples at every distance over
+\texorpdfstring{$\F_2$}{F2}}
 
 For a Ferrers diagram \(\mathcal D\) and a field \(\F\), let
 \[
@@ -529,9 +534,9 @@ Thus the rank distribution at stage \(t\) is
 \]
 
 \begin{corollary}\label{cor:every-distance}
-Over \(\F_2\), the Etzion--Silberstein bound fails for every minimum
-rank distance \(d\geq3\).  Moreover, for every such \(d\) it fails for
-at least one irreducible Ferrers-diagram pair.
+For every minimum rank distance \(d\geq3\), there is a Ferrers diagram for
+which the Etzion--Silberstein bound is not attained over \(\F_2\).  Moreover,
+one can choose an irreducible Ferrers-diagram pair.
 \end{corollary}
 
 \begin{proof}
@@ -550,10 +555,11 @@ therefore produce one on \(\mathcal E_t\), a contradiction.  If
 The complete verification package is available at
 \href{https://github.com/infinityscroll/etzion-silberstein-counterexample}
 {github.com/infinityscroll/etzion-silberstein-counterexample}.  It contains
-the explicit dimension-eleven certificate, independent verifiers, the row-cone family checks (\texttt{verification/family}), the full
-classification and kernel-enumeration outputs, solver logs, and a manifest of
-cryptographic hashes.  All mathematical decisions use exact binary
-arithmetic; floating-point calculations are not used.
+the explicit dimension-eleven certificate, independent verifiers, exact checks
+of the two smaller examples and the row-cone family, the full classification
+and kernel-enumeration outputs, solver logs, and a manifest of cryptographic
+hashes.  All mathematical decisions use exact binary arithmetic;
+floating-point calculations are not used.
 
 \begin{thebibliography}{9}
 
