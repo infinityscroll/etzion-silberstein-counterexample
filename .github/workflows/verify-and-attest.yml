@@ -1,0 +1,65 @@
+name: verify-and-attest
+
+# Re-runs the complete verification suite on GitHub's infrastructure and
+# publishes a provenance-attested artifact. The workflow run, the artifact,
+# and the Sigstore attestation each carry independent server-side timestamps.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify dimension-11 certificate (Python verifier)
+        run: python3 verification/dim11/verify_e6_dim11.py | tee dim11_python.log
+
+      - name: Verify dimension-11 certificate (independent C++ verifier)
+        run: |
+          c++ -O3 -std=c++20 \
+            verification/dim11/verify_e6_dim11_independent.cpp -o /tmp/v11
+          /tmp/v11 verification/dim11/e6_dim11_certificate.json \
+            | tee dim11_cpp.log
+
+      - name: Full release verification
+        run: python3 verification/verify_release.py | tee release_verification.log
+
+      - name: Replay DRAT unsatisfiability proofs
+        run: python3 verification/structural/verify_drat_proofs.py | tee drat_replay.log
+
+      - name: Assemble verification artifact
+        run: |
+          mkdir -p attest
+          cp verification/dim11/e6_dim11_certificate.json attest/
+          cp verification/audit_manifest.json attest/
+          cp dim11_python.log dim11_cpp.log release_verification.log drat_replay.log attest/
+          git rev-parse HEAD > attest/GIT_COMMIT
+          date -u +%FT%TZ > attest/VERIFIED_AT_UTC
+          (cd attest && sha256sum * > SHA256SUMS)
+          tar -czf "etzion-silberstein-verified-$(git rev-parse --short HEAD).tar.gz" -C attest .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-results
+          path: etzion-silberstein-verified-*.tar.gz
+          retention-days: 90
+
+      - name: Attest build provenance (Sigstore transparency log)
+        uses: actions/attest-build-provenance@v3
+        with:
+          subject-path: etzion-silberstein-verified-*.tar.gz
